@@ -1,0 +1,40 @@
+body{
+    background-color:lightcyan;
+}
+#title{
+    font-size: 50px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding:30px;
+}
+
+#content{
+    font-size: 20px;
+    text-align: center;
+    padding:30px;
+}
+
+#btn{
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: green;
+    text-emphasis: bold;
+    /* padding:10px; */
+    margin:20px;
+    font-size: 20px;
+    font-style:italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+}
+
+#btn:hover{
+    background-color: red;
+    /* font-size: 30px; */
+}
+
+#final{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+
+}
