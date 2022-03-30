@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <script src="calc.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<input id="result" style="color:blue"></input>
+<form id="myform" Name="calc">
+    <!-- <input name="display"><br> -->
+    <br>
+    <input type="button" value="0" onClick="result.value+='0'">
+    <input type="button" value="1" onClick="result.value+='1'">
+    <input type="button" value="2" onClick="result.value+='2'">
+    <input type="button" value="+" onClick="result.value+='+'" style=color:#cc5c11;>
+    <br/> 
+    <input type="button" value="3" onClick="result.value+='3'">
+    <input type="button" value="4" onClick="result.value+='4'">
+    <input type="button" value="5" onClick="result.value+='5'">
+    <input type="button" value="-" onClick="result.value+='-'" style=color:brown;>
+    <br> 
+    <input type="button" value="6" onClick="result.value+='6'">
+    <input type="button" value="7" onClick="result.value+='7'">
+    <input type="button" value="8" onClick="result.value+='8'">
+    <input type="button" value="x" onClick="result.value+='*'" style=color:blueviolet;>
+    <br> 
+    <input type="button" value="C" onClick="result.value=''" style="color:red">
+    <input type="button" value="9" onClick="result.value+='9'">
+    <input type="button" value="=" onclick="result.value=eval(result.value)" style="color:green; " >
+    <input type="button" value="/" onClick="result.value+='/'" style="color:yellow">
+    <br>
+
+</form>
+</body>
+</html>
