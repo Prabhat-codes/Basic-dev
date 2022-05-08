@@ -1,0 +1,15 @@
+<html>
+
+<body>
+    <form name="form" action="% url'login' %" method="POST">
+        {%csrf_token%}
+        <input type="text" name="Username" />
+        <br>
+        <input type="number" name="contact_num" />
+        <br>
+        <button type="submit" name="Login" />
+        Login
+    </form>
+</body>
+
+</html>
