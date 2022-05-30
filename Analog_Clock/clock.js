@@ -19,7 +19,7 @@ function drawFace(ctx,radius){
     ctx.fill();
     grad=ctx.createRadialGradient(0,0,radius*0.95,0,0,radius*1.05);
     grad.addColorStop(0,'#020');
-    grad.addColorStop(0.5,'blue');
+    grad.addColorStop(0.5,'red');
     grad.addColorStop(1,'#020');
     ctx.strokeStyle=grad;
     ctx.lineWidth=radius*0.1;
