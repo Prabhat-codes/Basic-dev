@@ -6,6 +6,8 @@ Small projects from when I was learning web development and programming. It is f
 
 **Tech stack:** HTML, CSS, JavaScript, React with Vite, Python with Django and Django REST Framework, C, C++ and Java.
 
+**Live site:** https://basic-dev.vercel.app
+
 ## Web apps
 
 | Folder | What it does |
