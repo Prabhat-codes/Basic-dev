@@ -1,8 +1,13 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logged in</title>
+</head>
 <body>
-    You are : <strong>{{username}}</strong>
-    Your number is : <strong>{{contact_num}}</strong>
+    <p>You are: <strong>{{ username }}</strong></p>
+    <p>Your number is: <strong>{{ contact_num }}</strong></p>
+    <a href="{% url 'index' %}">Back</a>
 </body>
-
 </html>

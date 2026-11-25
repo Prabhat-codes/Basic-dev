@@ -1,28 +1,22 @@
-from django.shortcuts import render,HttpResponse
-from first.forms import LoginForm
+from django.shortcuts import redirect, render
+
+from .forms import LoginForm
+
+
+def form_view(request):
+    if 'username' in request.session:
+        return render(request, 'loggedin.html', {'username': request.session['username']})
+    return render(request, 'login.html', {'form': LoginForm()})
+
 
 def login(request):
-    username = 'not logged in'
-    if request.method == 'POST':
-        MyLoginForm = LoginForm(request.POST)
-    if MyLoginForm.is_valid():
-        username = MyLoginForm.cleaned_data['username']
-        request.session['username'] = username
-    else:
-        MyLoginForm = LoginForm()
-    return render(request, 'loggedin.html', {"username" : username})
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        request.session['username'] = form.cleaned_data['username']
+        return redirect('formView')
+    return render(request, 'login.html', {'form': form})
 
-
-def formView(request):
-    if request.session.has_key('username'):
-        username = request.session['username']
-        return render(request, 'loggedin.html', {"username" : username})
-    else:
-        return render(request, 'login.html', {"username":"hello world"})
 
 def logout(request):
-    try:
-        del request.session['username']
-    except:
-        pass
-    return HttpResponse("<strong>You are logged out.</strong>")
+    request.session.pop('username', None)
+    return render(request, 'loggedout.html')

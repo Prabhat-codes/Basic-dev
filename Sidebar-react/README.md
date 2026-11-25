@@ -1,4 +1,14 @@
-# Sidebar 
-While maintaining this file structure, add this to show an indented sidebar just like vs code, where you can add your own files and folders 
+# Sidebar
 
-## Need to work on edit and delete in the future. 
+## About
+
+A collapsible file explorer like the sidebar in VS Code, built with React. You can open folders, add files and folders, rename them and delete them. Changes last until the page is refreshed.
+
+## Run
+
+```
+npm install
+npm run dev
+```
+
+Then open the address that Vite prints. `npm run build` makes the production version in `dist/`.

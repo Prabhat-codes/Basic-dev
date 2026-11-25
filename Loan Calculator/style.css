@@ -1,24 +1,43 @@
-#loancal{
-    background-color: black;
-    color: white;
-    width: 500px;
-    padding: 10px 20px 40px 50px;
-    margin-left: 250px;
-    margin-top: 155px;
-    /* margin-bottom: 200px; */
-    /* margin-right: 200px; */
-
+* {
+    box-sizing: border-box;
 }
-body{
+
+body {
+    margin: 0;
+    padding: 16px;
     background-color: lightblue;
 }
 
-input[type="number"]
-{   
-    width: 400px;
-    font-size:24px;
+.home {
+    color: #000;
 }
 
-h2{
-    font-size: 50px;
+#loancal {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 6vh auto 0;
+    padding: 16px 32px 24px;
+    color: #fff;
+    background-color: #000;
+}
+
+label {
+    margin: 14px 0 6px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 24px;
+}
+
+#pay {
+    font-size: clamp(24px, 6vw, 34px);
+    overflow-wrap: anywhere;
+}
+
+#details {
+    min-height: 1.4em;
+    font-size: 18px;
 }

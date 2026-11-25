@@ -1,15 +1,16 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
 <body>
-    <form name="form" action="% url'login' %" method="POST">
-        {%csrf_token%}
-        <input type="text" name="Username" />
-        <br>
-        <input type="number" name="contact_num" />
-        <br>
-        <button type="submit" name="Login" />
-        Login
+    <h1>Login</h1>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
     </form>
 </body>
-
 </html>

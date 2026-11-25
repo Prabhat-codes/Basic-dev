@@ -1,0 +1,23 @@
+# local databases (create them with: python manage.py migrate)
+*.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# compiled practice programs
+*.exe
+*.class
+Practice/matrix_row_sum
+Practice/operator_puzzle
+Practice/recursive_search
+Practice/substring_occurrences
+Practice/switch_puzzle
+
+# Node and build output
+node_modules/
+dist/
+_site/
+.vercel

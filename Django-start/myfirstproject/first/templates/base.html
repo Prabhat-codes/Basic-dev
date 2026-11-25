@@ -1,19 +1,17 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
     <meta charset="utf-8">
-
-    <title>Basic Site Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comment form</title>
 </head>
-
 <body>
-<form action="" method="POST"> 
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-
-</form>
+    <h1>Leave a comment</h1>
+    {% if thanks %}<p>Thanks, {{ thanks }}!</p>{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
 </body>
-
 </html>

@@ -7,7 +7,7 @@ class ChoiceInLine(admin.TabularInline):
     model=Choice
     extra=3
 class QuestionAdmin(admin.ModelAdmin):
-    fieldset=[
+    fieldsets=[
         (None, {'fields':['question_text']}),
         ('Date Information',{'fields':['pub_date'],'classes':['collapse']}),
     ]

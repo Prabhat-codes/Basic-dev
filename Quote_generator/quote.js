@@ -21,14 +21,20 @@ var quotes=[
     }
 ]
 
-function randomSelect(arrayLength){
-    return Math.floor(Math.random()*arrayLength);
+let previous = -1;
+
+// Picks any quote except the one already showing.
+function randomSelect(length){
+    if (previous < 0) return Math.floor(Math.random() * length);
+    const index = Math.floor(Math.random() * (length - 1));
+    return index < previous ? index : index + 1;
 }
 
 function generate(){
-    var random=randomSelect(quotes.length);
-    // alert("Here");
-    document.getElementById("quote").innerHTML='"'+quotes[random].quote+'"';
-    // console.log(quotes[random].author);
-    document.getElementById("author").innerHTML='-'+quotes[random].author+'"';
+    previous = randomSelect(quotes.length);
+    const { quote, author } = quotes[previous];
+    document.getElementById("quote").textContent = `"${quote}"`;
+    document.getElementById("author").textContent = `- ${author}`;
 }
+
+document.getElementById("btn").addEventListener("click", generate);

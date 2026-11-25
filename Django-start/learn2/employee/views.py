@@ -1,20 +1,19 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from datetime import date 
 import calendar
-from calendar import HTMLCalendar
+from datetime import date
 
-def index(request,year, month):
-    year=int(year)
-    month=int(month)
-    if year<1900 or year>2009: year = date.today().year
-    month_name=calendar.month_name[month]
-    title="MY Event Calendar - %s %s" %(month_name, year)
-    cal=HTMLCalendar().formatmonth(year,month)
-    
+from django.shortcuts import render
 
-    # return HttpResponse("<h1>%s</h1><br><p>%s<br></p>"%(title,cal))
-    return render(request,'calendar.html',{'title':title,'cal':cal})
+
+def index(request, year, month):
+    year = int(year)
+    month = int(month)
+    if year < 1900 or year > 2099:
+        year = date.today().year
+    title = "My Event Calendar - %s %s" % (calendar.month_name[month], year)
+    cal = calendar.HTMLCalendar().formatmonth(year, month)
+    return render(request, 'calendar.html', {'title': title, 'cal': cal})
+
 
 def base(request):
-    return render(request,'employeeform.html')
+    context = {'name': request.POST.get('name'), 'email': request.POST.get('email')}
+    return render(request, 'employeeform.html', context)

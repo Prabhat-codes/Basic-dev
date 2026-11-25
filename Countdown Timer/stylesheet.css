@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.home {
+    display: block;
+    text-align: left;
+    color: #396;
+}
+
+h1 {
+    color: #396;
+    font-size: clamp(32px, 8vw, 50px);
+    margin: 8vh 0 24px;
+}
+
+#setup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+#setup input,
+#setup button {
+    font: inherit;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #396;
+}
+
+#setup button {
+    background: #00bf96;
+    color: #000;
+    cursor: pointer;
+}
+
+#setup #reset {
+    background: #fff;
+}
+
+#clockdiv {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 160px));
+    justify-content: center;
+    gap: 12px;
+    color: #fff;
+}
+
+#clockdiv > div {
+    padding: 16px 12px;
+    border-radius: 10px;
+    background: #00bf96;
+}
+
+#clockdiv span {
+    display: block;
+    padding: 28px 0;
+    border-radius: 3px;
+    background: #000;
+    font-size: clamp(32px, 7vw, 55px);
+    font-variant-numeric: tabular-nums;
+}
+
+.smalltext {
+    padding-top: 8px;
+    font-size: clamp(14px, 4vw, 24px);
+}
+
+#message {
+    color: #396;
+    font-size: 24px;
+    min-height: 1.5em;
+}
+
+@media (max-width: 520px) {
+    #clockdiv {
+        grid-template-columns: repeat(2, minmax(0, 160px));
+    }
+}

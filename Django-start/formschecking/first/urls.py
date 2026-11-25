@@ -1,8 +1,9 @@
-# from django.shortcuts import url
-from django.urls import include, re_path
+from django.urls import path
+
 from . import views
+
 urlpatterns = [
-re_path(r'^connection/',views.formView, name = 'formView'),
-re_path(r'^login/', views.login, name = 'login'),
-re_path(r'^logout/', views.logout, name = 'logout'),
+    path('connection/', views.form_view, name='formView'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
 ]

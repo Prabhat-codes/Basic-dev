@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  max-width: 480px;
+}
+
+.folder,
+.file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 3px;
+}
+
+.folder {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+button.name {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-shrink: 0;
+  gap: 3px;
+}
+
+.buttons button {
+  cursor: pointer;
+}
+
+.children {
+  padding-left: clamp(12px, 4vw, 25px);
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.inputContainer__input {
+  min-width: 0;
+  max-width: 100%;
+  padding: 5px;
+  border: 1px solid black;
+}

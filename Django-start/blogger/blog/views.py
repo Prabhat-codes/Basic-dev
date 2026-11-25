@@ -1,20 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.utils import timezone
 
-# Create your views here.
-from datetime import datetime
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from blog.models import BlogPost, BlogPostForm
+from .models import BlogPost, BlogPostForm
 
-def archive(request):
-    posts=BlogPost.objects.all()[:10]
-    return render(request, 'archive.html',{'posts':posts, 'form':BlogPostForm()})
+
+def archive(request, form=None):
+    posts = BlogPost.objects.all()[:10]
+    context = {'posts': posts, 'form': form or BlogPostForm()}
+    return render(request, 'archive.html', context)
+
 
 def create_blogpost(request):
-    if request.method=='POST':
-        form=BlogPostForm(request.POST)
-        if form.is_valid():
-            post=form.save(commit=False)
-            post.timestamp=datetime.any()
-            post.save()
-    return HttpResponseRedirect('/blog/')
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if not form.is_valid():
+            return archive(request, form)
+        post = form.save(commit=False)
+        post.timestamp = timezone.now()
+        post.save()
+    return redirect('archive')

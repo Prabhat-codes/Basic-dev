@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            Loan Calculator
-        </title>
-        <link rel="stylesheet" href="style.css">    
-    </head>
-    <body>
-        <div id="loancal" style="margin-left:100px">
-            <h1>Loan Calculator</h1>
-            <p>Loan Amount : </p><input id="amount" type="number" size="50" placeholder="Enter the amount please" min="1" max="100000" onchange="calc()">
-            <p>Loan Rate: </p><input id="rate" type="number" size="50" placeholder="Enter the rate % please" min="1" max="100" value="10" onchange="calc()">
-            <p>Loan Time : </p><input id="time" type="number" size="50" placeholder="Enter the time in months please" min="1" max="300" onchange="calc()">
-            
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loan Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="home" href="../index.html">&larr; All apps</a>
+    <main id="loancal">
+        <h1>Loan Calculator</h1>
+        <label for="amount">Loan amount ($)</label>
+        <input id="amount" type="number" placeholder="Enter the amount" min="1" step="any" inputmode="decimal">
+
+        <label for="rate">Interest rate (% a year)</label>
+        <input id="rate" type="number" placeholder="Enter the rate %" min="0" max="100" step="any" value="10" inputmode="decimal">
+
+        <label for="time">Loan time (months)</label>
+        <input id="time" type="number" placeholder="Enter the time in months" min="1" max="600" step="1" inputmode="numeric">
+
+        <div role="status">
             <h2 id="pay"></h2>
+            <p id="details"></p>
         </div>
-        <script src="loancalc.js"></script>
-    </body>
+    </main>
+    <script src="loancalc.js"></script>
+</body>
+
 </html>

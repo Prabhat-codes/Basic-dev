@@ -1,8 +1,8 @@
-from django.conf.urls import include
-from django.urls import re_path as url
-from blog.views import archive,create_blogpost
+from django.urls import path
 
-urlpatterns=[
-    url(r'^$',archive,name='archive'),
-    url(r'^create/',create_blogpost,name='create_blogpost'),
+from . import views
+
+urlpatterns = [
+    path('', views.archive, name='archive'),
+    path('create/', views.create_blogpost, name='create_blogpost'),
 ]

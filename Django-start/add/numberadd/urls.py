@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import re_path,include
+from django.urls import path
+
 from . import views
 
 urlpatterns = [
-    re_path(r'^(?P<num1>[0-9]{4})/(?P<num2>0?[1-9]|1[0-2])/',views.index,name='index')
+    path('<int:num1>/<int:num2>/', views.index, name='index'),
 ]

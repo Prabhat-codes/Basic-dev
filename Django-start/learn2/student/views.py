@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
 def index(request):
-    return render(request,'studentform.html')
+    context = {'name': request.POST.get('name'), 'email': request.POST.get('email')}
+    return render(request, 'studentform.html', context)

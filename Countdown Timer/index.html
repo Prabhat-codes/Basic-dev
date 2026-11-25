@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <a class="home" href="../index.html">&larr; All apps</a>
+    <h1>Countdown Timer</h1>
+    <form id="setup">
+        <label for="target">Count down to</label>
+        <input type="datetime-local" id="target" required>
+        <button type="submit">Start</button>
+        <button type="button" id="reset">Reset</button>
+    </form>
+    <div id="clockdiv">
+        <div>
+            <span id="days">00</span>
+            <div class="smalltext">Days</div>
+        </div>
+        <div>
+            <span id="hours">00</span>
+            <div class="smalltext">Hours</div>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <div class="smalltext">Seconds</div>
+        </div>
+    </div>
+    <p id="message" role="status"></p>
+    <script src="countdown.js"></script>
+</body>
+
+</html>

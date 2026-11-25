@@ -1,16 +1,20 @@
+from django import forms
 from django.db import models
 
-# Create your models here.
-from django import forms
+
 class BlogPost(models.Model):
-    title=models.CharField()
-    body=models.TextField()
-    timestamp=models.DateTimeField()
+    title = models.CharField(max_length=150)
+    body = models.TextField()
+    timestamp = models.DateTimeField()
+
     class Meta:
-        ordering=('-timestamp',)
-        app_label='BlogPost'
+        ordering = ('-timestamp',)
+
+    def __str__(self):
+        return self.title
+
+
 class BlogPostForm(forms.ModelForm):
     class Meta:
-        model=BlogPost
-        exclude=('timestamp',)
-        
+        model = BlogPost
+        exclude = ('timestamp',)

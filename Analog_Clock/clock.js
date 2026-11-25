@@ -1,78 +1,84 @@
-var canvas=document.getElementById("canvas");
-var ctx=canvas.getContext("2d");
-var radius = canvas.height / 2;
-ctx.translate(radius,radius);
-radius=radius*0.9;
-setInterval(drawClock,1000); 
+const canvas = document.getElementById("clock");
+const ctx = canvas.getContext("2d");
 
-function drawClock(){
-    drawFace(ctx,radius);
-    drawNumbers(ctx,radius);
-    time(ctx,radius);
+// Match the drawing buffer to the on-screen size so the clock stays sharp.
+function resize() {
+    const size = Math.round(canvas.clientWidth * window.devicePixelRatio);
+    canvas.width = size;
+    canvas.height = size;
+    drawClock();
 }
 
-function drawFace(ctx,radius){
-    var grad;
+function drawClock() {
+    const centre = canvas.width / 2;
+    const radius = centre * 0.9;
+
+    ctx.setTransform(1, 0, 0, 1, centre, centre);
+    ctx.clearRect(-centre, -centre, canvas.width, canvas.height);
+
+    drawFace(radius);
+    drawNumbers(radius);
+    drawHands(radius, new Date());
+}
+
+function drawFace(radius) {
     ctx.beginPath();
-    ctx.arc(0,0,radius,0,2*Math.PI);
-    ctx.fillStyle="White";
+    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = "white";
     ctx.fill();
-    grad=ctx.createRadialGradient(0,0,radius*0.95,0,0,radius*1.05);
-    grad.addColorStop(0,'#020');
-    grad.addColorStop(0.5,'red');
-    grad.addColorStop(1,'#020');
-    ctx.strokeStyle=grad;
-    ctx.lineWidth=radius*0.1;
+
+    const rim = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+    rim.addColorStop(0, "#020");
+    rim.addColorStop(0.5, "red");
+    rim.addColorStop(1, "#020");
+    ctx.strokeStyle = rim;
+    ctx.lineWidth = radius * 0.1;
     ctx.stroke();
-    ctx.beginPath();  
-    ctx.arc(0,0,radius*0.1,0,2*Math.PI);
-    ctx.fillStyle='#333';
-    ctx.fill();  
 }
 
-function drawNumbers(ctx,radius){
-    var ang;
-    var num;
-    ctx.font=radius*0.15 + "px arial";
-    ctx.textBaseline="middle";
-    ctx.textAlign="center";
-    for(num=1;num<13;num++){
-        ang=num*Math.PI/6;
-        ctx.rotate(ang);
-        ctx.translate(0,- radius*0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(num.toString(),0,0);
-        ctx.rotate(ang);
-        ctx.translate(0,radius*0.85);
-        ctx.rotate(-ang);
+function drawNumbers(radius) {
+    ctx.fillStyle = "#222";
+    ctx.font = `${radius * 0.15}px Arial, sans-serif`;
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+
+    for (let number = 1; number <= 12; number++) {
+        const angle = number * Math.PI / 6;
+        ctx.fillText(number, Math.sin(angle) * radius * 0.78, -Math.cos(angle) * radius * 0.78);
     }
 }
 
-function time(ctx,radius){
-    var now=new Date();
-    var hour=now.getHours();
-    var minute=now.getMinutes();
-    var second=now.getSeconds();
+function drawHands(radius, now) {
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes() + seconds / 60;
+    const hours = (now.getHours() % 12) + minutes / 60;
 
-    hour=hour%12;
-    hour=hour*Math.PI/6+minute*Math.PI/360+second*Math.PI/(360*60);
-    drawHand(ctx,hour,radius*0.5,radius*0.07);
+    drawHand(hours * Math.PI / 6, radius * 0.5, radius * 0.07, "#222");
+    drawHand(minutes * Math.PI / 30, radius * 0.72, radius * 0.045, "#222");
+    drawHand(seconds * Math.PI / 30, radius * 0.82, radius * 0.015, "#c00");
 
-    minute=minute*Math.PI/30 + second*Math.PI/(30*60);
-    drawHand(ctx,minute,radius*0.8,radius*0.07);
-
-    second=second*Math.PI/30;
-    drawHand(ctx,second,radius*0.9,radius*0.02);
-}
-
-function drawHand(ctx,hand,length,width){
     ctx.beginPath();
-    ctx.lineWidth=width;
-    ctx.lineCap="round";
-    ctx.moveTo(0,0);
-    ctx.rotate(hand);
-    ctx.lineTo(0,-length);
-    ctx.stroke();
-    ctx.rotate(-hand);
-
+    ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+    ctx.fillStyle = "#c00";
+    ctx.fill();
 }
+
+function drawHand(angle, length, width, colour) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = colour;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(Math.sin(angle) * length, -Math.cos(angle) * length);
+    ctx.stroke();
+}
+
+// Redraw just after each new second begins, so the hands never lag behind.
+function tick() {
+    drawClock();
+    setTimeout(tick, 1000 - (Date.now() % 1000) + 5);
+}
+
+window.addEventListener("resize", resize);
+resize();
+tick();

@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.generic import RedirectView
 from webapp import views
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='employees/')),
     path('admin/', admin.site.urls),
-    path('employees/',views.employeeList.as_view() )
+    path('employees/', views.employeeList.as_view()),
 ]
